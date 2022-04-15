@@ -1,4 +1,5 @@
 using LookingForGroup.Data;
+using LookingForGroup.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -42,5 +43,13 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
+
+//create service provider to access built in services
+IServiceScope? serviceProvider = app.Services.GetRequiredService<IServiceProvider>().CreateScope();
+
+//Create default roles
+await IdentityHelper.CreateRoles(serviceProvider.ServiceProvider, IdentityHelper.Member, IdentityHelper.Admin);
+
+//create default admin
 
 app.Run();
