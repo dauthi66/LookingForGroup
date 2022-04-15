@@ -11,6 +11,8 @@ builder.Services.AddDbContext<LookingForGroupDbContext>(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    //add role support (for admins)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<LookingForGroupDbContext>();
 builder.Services.AddControllersWithViews();
 
