@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LookingForGroup.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class LookingForGroupDbContext : IdentityDbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public LookingForGroupDbContext(DbContextOptions<LookingForGroupDbContext> options)
             : base(options)
         {
         }
