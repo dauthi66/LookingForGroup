@@ -9,7 +9,6 @@ namespace LookingForGroup.Controllers
     //To make a page limited to access of a admin only use annotation:
     //[Authorize(Roles = IdentityHelper.Admin)]
 
-    //[Authorize]
     public class HomeController : Controller
     {
         
