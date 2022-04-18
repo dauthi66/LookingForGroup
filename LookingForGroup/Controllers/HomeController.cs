@@ -1,11 +1,17 @@
 ﻿using LookingForGroup.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace LookingForGroup.Controllers
 {
+    //[Authorize] annotation forces a page to only allow access when logged in
+    //To make a page limited to access of a admin only use annotation:
+    //[Authorize(Roles = IdentityHelper.Admin)]
+
     public class HomeController : Controller
     {
+        
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -17,7 +23,6 @@ namespace LookingForGroup.Controllers
         {
             return View();
         }
-
         public IActionResult Privacy()
         {
             return View();

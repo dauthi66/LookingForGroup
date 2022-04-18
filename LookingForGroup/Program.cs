@@ -1,4 +1,5 @@
 using LookingForGroup.Data;
+using LookingForGroup.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,6 +12,8 @@ builder.Services.AddDbContext<LookingForGroupDbContext>(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    //add role support (for admins)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<LookingForGroupDbContext>();
 builder.Services.AddControllersWithViews();
 
@@ -40,5 +43,15 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
+
+//create service provider to access built in services
+IServiceScope? serviceProvider = app.Services.GetRequiredService<IServiceProvider>().CreateScope();
+
+//Create default roles
+await IdentityHelper.CreateRoles
+    (serviceProvider.ServiceProvider, IdentityHelper.Member, IdentityHelper.Moderator, IdentityHelper.Admin);
+
+//create default admin
+await IdentityHelper.CreateDefaultMember(serviceProvider.ServiceProvider, IdentityHelper.Admin);
 
 app.Run();
