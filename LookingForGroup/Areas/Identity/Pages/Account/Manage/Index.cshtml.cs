@@ -6,6 +6,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using LookingForGroup.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -14,12 +15,12 @@ namespace LookingForGroup.Areas.Identity.Pages.Account.Manage
 {
     public class IndexModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<LookingForGroupUser> _userManager;
+        private readonly SignInManager<LookingForGroupUser> _signInManager;
 
         public IndexModel(
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager)
+            UserManager<LookingForGroupUser> userManager,
+            SignInManager<LookingForGroupUser> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -51,6 +52,16 @@ namespace LookingForGroup.Areas.Identity.Pages.Account.Manage
         /// </summary>
         public class InputModel
         {
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Full name")]
+            public string Name { get; set; }
+
+            [Required]
+            [Display(Name = "Custom Tags")]
+            [DataType(DataType.Text)]
+            public List<Tags> Tags { get; set; }
+
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
@@ -60,15 +71,19 @@ namespace LookingForGroup.Areas.Identity.Pages.Account.Manage
             public string PhoneNumber { get; set; }
         }
 
-        private async Task LoadAsync(IdentityUser user)
+        private async Task LoadAsync(LookingForGroupUser user)
         {
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
+
 
             Username = userName;
 
             Input = new InputModel
             {
+                Name = user.Name,
+                Tags = user.Tags,
+
                 PhoneNumber = phoneNumber
             };
         }
@@ -108,6 +123,16 @@ namespace LookingForGroup.Areas.Identity.Pages.Account.Manage
                     StatusMessage = "Unexpected error when trying to set phone number.";
                     return RedirectToPage();
                 }
+            }
+
+            if (Input.Name != user.Name)
+            {
+                user.Name = Input.Name;
+            }
+
+            if (Input.Tags != user.Tags)
+            {
+                user.Tags = Input.Tags;
             }
 
             await _signInManager.RefreshSignInAsync(user);
