@@ -10,9 +10,6 @@ namespace LookingForGroup.Areas.Identity.Data
         [PersonalData]
         public List<Tags> Tags { get; set; } = new List<Tags>();
 
-        public int TagId { get; set; }
-        public Tags Tag { get; set; }
-
         //[PersonalData]
         //public List<UserPlatforms> Platforms { get; set; } = new List<UserPlatforms>();
 
