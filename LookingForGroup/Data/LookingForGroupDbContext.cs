@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using LookingForGroup.Areas.Identity.Data;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace LookingForGroup.Data
@@ -9,5 +10,9 @@ namespace LookingForGroup.Data
             : base(options)
         {
         }
+
+        public DbSet<LookingForGroupUser> User { get; set; } = null!;
+
+        public DbSet<Tags> Tags { get; set; } = null!;
     }
 }
