@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using LookingForGroup.Areas.Identity.Data;
+using Microsoft.AspNetCore.Identity;
 
 namespace LookingForGroup.Models
 {
@@ -35,13 +36,13 @@ namespace LookingForGroup.Models
 
         public static async Task CreateDefaultMember(IServiceProvider provider, string role)
         {
-            var UserManager = provider.GetService<UserManager<IdentityUser>>();
+            var UserManager = provider.GetService<UserManager<LookingForGroupUser>>();
 
             //If no admins are present, make a default admin
             int numUsers = (await UserManager.GetUsersInRoleAsync(role)).Count;
             if (numUsers == 0)
             {
-                var defaultAdmin = new IdentityUser()
+                var defaultAdmin = new LookingForGroupUser()
                 {
                     UserName = "testAdmin",
                     Email = "adminEmail.@aol.com"
