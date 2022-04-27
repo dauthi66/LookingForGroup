@@ -1,3 +1,4 @@
+using LookingForGroup.Areas.Identity.Data;
 using LookingForGroup.Data;
 using LookingForGroup.Models;
 using Microsoft.AspNetCore.Identity;
@@ -11,10 +12,11 @@ builder.Services.AddDbContext<LookingForGroupDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<LookingForGroupUser>(options => options.SignIn.RequireConfirmedAccount = true)
     //add role support (for admins)
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<LookingForGroupDbContext>();
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();

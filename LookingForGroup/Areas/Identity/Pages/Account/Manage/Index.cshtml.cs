@@ -52,12 +52,11 @@ namespace LookingForGroup.Areas.Identity.Pages.Account.Manage
         /// </summary>
         public class InputModel
         {
-            [Required]
             [DataType(DataType.Text)]
             [Display(Name = "Full name")]
             public string Name { get; set; }
 
-            [Required]
+            //[Required]
             [Display(Name = "Custom Tags")]
             [DataType(DataType.Text)]
             public List<Tags> Tags { get; set; }
@@ -83,7 +82,6 @@ namespace LookingForGroup.Areas.Identity.Pages.Account.Manage
             {
                 Name = user.Name,
                 Tags = user.Tags,
-
                 PhoneNumber = phoneNumber
             };
         }
@@ -135,6 +133,7 @@ namespace LookingForGroup.Areas.Identity.Pages.Account.Manage
                 user.Tags = Input.Tags;
             }
 
+            await _userManager.UpdateAsync(user);
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Your profile has been updated";
             return RedirectToPage();
