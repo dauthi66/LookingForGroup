@@ -7,7 +7,6 @@ namespace LookingForGroup.Data
     {
         public static void addTag(string newTag)
         {
-            
             using LookingForGroupDbContext database = new();
             Tags? tag = (from Tags in database.Tags
                          where Tags.TagName == newTag
@@ -22,9 +21,6 @@ namespace LookingForGroup.Data
                 database.Tags.Add(tags);
                 database.SaveChanges();
             }
-
-            
-
         }
     }
 }
