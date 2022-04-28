@@ -56,4 +56,13 @@ await IdentityHelper.CreateRoles
 //create default admin
 await IdentityHelper.CreateDefaultMember(serviceProvider.ServiceProvider, IdentityHelper.Admin);
 
+LookingForGroupDbContext db = new();
+
+TagDBHelper.addTag("Adventure");
+TagDBHelper.addTag("FPS");
+TagDBHelper.addTag("RPG");
+TagDBHelper.addTag("Racing");
+
 app.Run();
+
+
