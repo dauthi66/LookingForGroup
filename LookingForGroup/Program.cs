@@ -56,4 +56,34 @@ await IdentityHelper.CreateRoles
 //create default admin
 await IdentityHelper.CreateDefaultMember(serviceProvider.ServiceProvider, IdentityHelper.Admin);
 
+LookingForGroupDbContext db = new();
+
+Tags tags = new()
+{
+    TagName = "RPG"
+};
+
+Tags tags1 = new()
+{
+    TagName = "First Person Shooter"
+};
+
+Tags tags2 = new()
+{
+    TagName = "Strategy"
+};
+
+
+
+
+
+
+db.Add(tags);
+db.Add(tags1);
+db.Add(tags2);
+db.SaveChanges();
+
+
 app.Run();
+
+
