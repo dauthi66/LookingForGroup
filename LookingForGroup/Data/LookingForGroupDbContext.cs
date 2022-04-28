@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LookingForGroup.Data
 {
-    public class LookingForGroupDbContext : IdentityDbContext
+    internal partial class LookingForGroupDbContext : IdentityDbContext
     {
         public LookingForGroupDbContext()
         {
@@ -15,6 +15,7 @@ namespace LookingForGroup.Data
         {
             
         }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=LookingForGroupDB;Trusted_Connection=True;MultipleActiveResultSets=true");
