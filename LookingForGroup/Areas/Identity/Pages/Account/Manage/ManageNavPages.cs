@@ -73,8 +73,7 @@ namespace  LookingForGroup.Areas.Identity.Pages.Account.Manage
         /// </summary>
         public static string IndexNavClass(ViewContext viewContext) => PageNavClass(viewContext, Index);
         /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
+        ///   Using the default identity structure, this will be used to view the tags page.
         /// </summary>
         public static string TagsNavClass(ViewContext viewContext) => PageNavClass(viewContext, Tags);
 
