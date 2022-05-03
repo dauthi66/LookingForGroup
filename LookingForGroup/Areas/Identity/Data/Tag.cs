@@ -5,22 +5,22 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace LookingForGroup.Areas.Identity.Data
 {
     
-    public class Tags
-    {
-        
+    public class Tag
+    {   
         [Key]
         public int TagId { get; set; }
-        public string? TagName { get; set; }
+
+        [Required]
+        public string TagName { get; set; }
 
         public List<LookingForGroupUser> LookingForGroupUsers { get; set; }
 
-        public Tags(String tagname)
-        {
-     
+        public Tag(String tagname)
+        {    
             TagName = tagname;
         }
 
-        public Tags()
+        public Tag()
         {
         }
     }

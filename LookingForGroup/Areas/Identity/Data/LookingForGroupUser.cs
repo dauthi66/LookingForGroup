@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using LookingForGroup.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace LookingForGroup.Areas.Identity.Data
 {
@@ -8,7 +9,10 @@ namespace LookingForGroup.Areas.Identity.Data
         public string? Name { get; set; }
 
         [PersonalData]
-        public List<Tags> Tags { get; set; } = new List<Tags>();
+        public List<Tag> Tags { get; set; } = new List<Tag>();
+
+        [PersonalData] 
+        public List<Friend> Friends { get; set; } = new List<Friend>();
 
         //[PersonalData]
         //public List<UserPlatforms> Platforms { get; set; } = new List<UserPlatforms>();

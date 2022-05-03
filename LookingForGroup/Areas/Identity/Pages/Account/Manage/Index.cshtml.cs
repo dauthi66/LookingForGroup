@@ -59,7 +59,7 @@ namespace LookingForGroup.Areas.Identity.Pages.Account.Manage
             //[Required]
             [Display(Name = "Custom Tags")]
             [DataType(DataType.Text)]
-            public List<Tags> Tags { get; set; }
+            public List<Tag> Tags { get; set; }
 
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used

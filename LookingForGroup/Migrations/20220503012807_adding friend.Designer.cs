@@ -4,16 +4,18 @@ using LookingForGroup.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace LookingForGroup.Data.Migrations
+namespace LookingForGroup.Migrations
 {
     [DbContext(typeof(LookingForGroupDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220503012807_adding friend")]
+    partial class addingfriend
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,7 +24,47 @@ namespace LookingForGroup.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("LookingForGroup.Areas.Identity.Data.Tags", b =>
+            modelBuilder.Entity("FriendLookingForGroupUser", b =>
+                {
+                    b.Property<int>("FriendsId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LookingForGroupUsersId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("FriendsId", "LookingForGroupUsersId");
+
+                    b.HasIndex("LookingForGroupUsersId");
+
+                    b.ToTable("FriendLookingForGroupUser");
+                });
+
+            modelBuilder.Entity("LookingForGroup.Areas.Identity.Data.Friend", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Friends");
+                });
+
+            modelBuilder.Entity("LookingForGroup.Areas.Identity.Data.Tag", b =>
                 {
                     b.Property<int>("TagId")
                         .ValueGeneratedOnAdd()
@@ -31,6 +73,7 @@ namespace LookingForGroup.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TagId"), 1L, 1);
 
                     b.Property<string>("TagName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("TagId");
@@ -38,7 +81,7 @@ namespace LookingForGroup.Data.Migrations
                     b.ToTable("Tags");
                 });
 
-            modelBuilder.Entity("LookingForGroupUserTags", b =>
+            modelBuilder.Entity("LookingForGroupUserTag", b =>
                 {
                     b.Property<string>("LookingForGroupUsersId")
                         .HasColumnType("nvarchar(450)");
@@ -50,7 +93,7 @@ namespace LookingForGroup.Data.Migrations
 
                     b.HasIndex("TagsTagId");
 
-                    b.ToTable("LookingForGroupUserTags");
+                    b.ToTable("LookingForGroupUserTag");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -271,7 +314,22 @@ namespace LookingForGroup.Data.Migrations
                     b.HasDiscriminator().HasValue("LookingForGroupUser");
                 });
 
-            modelBuilder.Entity("LookingForGroupUserTags", b =>
+            modelBuilder.Entity("FriendLookingForGroupUser", b =>
+                {
+                    b.HasOne("LookingForGroup.Areas.Identity.Data.Friend", null)
+                        .WithMany()
+                        .HasForeignKey("FriendsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("LookingForGroup.Areas.Identity.Data.LookingForGroupUser", null)
+                        .WithMany()
+                        .HasForeignKey("LookingForGroupUsersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("LookingForGroupUserTag", b =>
                 {
                     b.HasOne("LookingForGroup.Areas.Identity.Data.LookingForGroupUser", null)
                         .WithMany()
@@ -279,7 +337,7 @@ namespace LookingForGroup.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("LookingForGroup.Areas.Identity.Data.Tags", null)
+                    b.HasOne("LookingForGroup.Areas.Identity.Data.Tag", null)
                         .WithMany()
                         .HasForeignKey("TagsTagId")
                         .OnDelete(DeleteBehavior.Cascade)

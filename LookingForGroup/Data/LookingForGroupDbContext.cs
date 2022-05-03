@@ -23,7 +23,15 @@ namespace LookingForGroup.Data
 
         public DbSet<LookingForGroupUser> User { get; set; } = null!;
 
-        public DbSet<Tags> Tags { get; set; } = null!;
+        public DbSet<Tag> Tags { get; set; } = null!;
 
+        public DbSet<Friend> Friends { get; set; } = null!;
+
+    }
+
+    public class FriendViewModel
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }     
     }
 }
