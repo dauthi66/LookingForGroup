@@ -28,10 +28,4 @@ namespace LookingForGroup.Data
         public DbSet<Friend> Friends { get; set; } = null!;
 
     }
-
-    public class FriendViewModel
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }     
-    }
 }

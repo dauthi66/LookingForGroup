@@ -7,22 +7,18 @@ namespace LookingForGroup.Areas.Identity.Data
         [Key]
         public int Id { get; set; }
 
-        public string Name { get; set; }
-
-        [Required]
-        public string UserName { get; set; }
-
-        [Required]
-        [EmailAddress]
-        public string Email { get; set; }
-
         public List<LookingForGroupUser> LookingForGroupUsers { get; set; }
 
         public Friend(String name, string userName, string email)
         {
-            Name = name;
-            UserName = userName;
-            Email = email;
         }
+    }
+
+    public class FriendViewModel
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string UserName { get; set; }
+        public string Email { get; set; }
     }
 }
