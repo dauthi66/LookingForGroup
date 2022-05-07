@@ -14,7 +14,7 @@ namespace LookingForGroup.Areas.Identity.Data
 
         public List<LookingForGroupUser> LookingForGroupUsers { get; set; }
 
-        public Tags(String tagname)
+        public Tags(string tagname)
         {
      
             TagName = tagname;
