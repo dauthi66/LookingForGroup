@@ -1,5 +1,5 @@
 ﻿using LookingForGroup.Areas.Identity.Data;
-using System.Linq;
+using System.Collections.Generic;
 
 namespace LookingForGroup.Data
 {
@@ -21,6 +21,12 @@ namespace LookingForGroup.Data
                 database.Tags.Add(tags);
                 database.SaveChanges();
             }
+        }
+
+        public static List<Tags> getTagsList()
+        {
+            using LookingForGroupDbContext db = new();
+            return db.Tags.ToList();
         }
     }
 }

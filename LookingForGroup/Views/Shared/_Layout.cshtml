@@ -1,5 +1,6 @@
 ﻿@using LookingForGroup.Areas.Identity.Data
 @using Microsoft.AspNetCore.Identity
+@using LookingForGroup.Data;
 @inject SignInManager<LookingForGroupUser> SignInManager
 @inject UserManager<LookingForGroupUser> UserManager
 
@@ -13,7 +14,6 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/LookingForGroup.styles.css" asp-append-version="true" />
 </head>
-
 
 <ul class="nav justify-content-end">
     @if (SignInManager.IsSignedIn(User))
@@ -60,8 +60,23 @@
         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
       </li>
     </ul>
+
+    @{
+        List<Tags> tags = TagDBHelper.getTagsList();
+        int btnCheckId = 1;
+     }
+
+    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+        @foreach (Tags tag in tags)
+        {
+            <input type="checkbox" class="btn-check" id="btncheck @btnCheckId" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btncheck @btnCheckId">@tag.TagName</label>
+            btnCheckId++;
+        }
+    </div>
   </div>
 </div>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
