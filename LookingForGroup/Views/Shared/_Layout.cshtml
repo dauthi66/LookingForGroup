@@ -60,12 +60,12 @@
         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
       </li>
     </ul>
-
+    <!--Gets a list of Tags from the database-->
     @{
         List<Tags> tags = TagDBHelper.getTagsList();
         int btnCheckId = 1;
      }
-
+     <!--Creates a Check-box toggle button for each tag-->
     <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
         @foreach (Tags tag in tags)
         {
