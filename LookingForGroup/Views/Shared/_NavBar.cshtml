@@ -1,0 +1,38 @@
+﻿@using LookingForGroup.Areas.Identity.Data
+@using LookingForGroup.Data
+<button class="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft" aria-controls="offcanvasLeft">Search</button>
+
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasLeft" aria-labelledby="offcanvasLeftLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasLeftLabel">TODO: Add checkboxes and search functionality.</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body small">
+    <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+    <ul class="nav flex-column">
+      <li class="nav-item">
+          <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+      </li>
+    </ul>
+    
+    @{
+        List<Tags> tagList = TagDBHelper.getTagsList();
+     }
+     <!--Creates a Check-box toggle button for each tag-->
+    <div class="btn-group-vertical btn-group-sm" role="group" aria-label="Basic checkbox toggle button group">
+        @for (int i = 0; i < tagList.Count; i++)
+        {
+            
+                <input type="checkbox" class="btn-check" id="btncheck @i " autocomplete="off">
+                <label class="btn btn-outline-primary" for="btncheck @i ">@tagList[i].TagName</label>
+            
+        }
+    </div>
+  </div>
+</div>
