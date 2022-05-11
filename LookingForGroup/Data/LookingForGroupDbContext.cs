@@ -30,6 +30,8 @@ namespace LookingForGroup.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<LookingForGroupUser>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
