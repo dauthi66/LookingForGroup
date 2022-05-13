@@ -1,5 +1,5 @@
 ﻿using LookingForGroup.Areas.Identity.Data;
-using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace LookingForGroup.Data
 {
@@ -21,6 +21,12 @@ namespace LookingForGroup.Data
                 database.Tags.Add(tags);
                 database.SaveChanges();
             }
+        }
+
+        public static async Task<List<Tags>> getTagsList()
+        {
+            using LookingForGroupDbContext db = new();
+            return await db.Tags.ToListAsync();
         }
     }
 }
