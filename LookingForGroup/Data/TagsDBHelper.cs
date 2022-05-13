@@ -1,5 +1,5 @@
 ﻿using LookingForGroup.Areas.Identity.Data;
-using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 
 namespace LookingForGroup.Data
 {
@@ -23,10 +23,10 @@ namespace LookingForGroup.Data
             }
         }
 
-        public static List<Tags> getTagsList()
+        public static async Task<List<Tags>> getTagsList()
         {
             using LookingForGroupDbContext db = new();
-            return db.Tags.ToList();
+            return await db.Tags.ToListAsync();
         }
     }
 }

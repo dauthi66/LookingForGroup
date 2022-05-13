@@ -21,9 +21,9 @@
       </li>
     </ul>
     
-    @{
-        List<Tags> tagList = TagDBHelper.getTagsList();
-     }
+        @{
+            List<Tags> tagList = await TagDBHelper.getTagsList();
+        }
      <!--Creates a Check-box toggle button for each tag-->
      <form>
         <div class="btn-group-vertical btn-group-sm" role="group" aria-label="Basic checkbox toggle button group">
