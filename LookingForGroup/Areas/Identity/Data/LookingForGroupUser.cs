@@ -1,7 +1,4 @@
-﻿using LookingForGroup.Models;
-using Microsoft.AspNetCore.Identity;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using Microsoft.AspNetCore.Identity;
 
 namespace LookingForGroup.Areas.Identity.Data
 {
@@ -30,15 +27,5 @@ namespace LookingForGroup.Areas.Identity.Data
 
         //[PersonalData]
         //public List<UserGamesUsuallyPlayed> GamesUsuallyPlaying { get; set; } = new List<UserGamesUsuallyPlayed>();
-    }
-
-    public class FriendViewModel
-    {
-        public int Id { get; set; }
-        public string Name { get; set; } = null!;
-        public string UserName { get; set; } = null!;
-        public string Email { get; set; } = null!;
-
-        public List<FriendViewModel> AllFriends { get; set; }
     }
 }
