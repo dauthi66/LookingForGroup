@@ -25,5 +25,7 @@ namespace LookingForGroup.Data
 
         public DbSet<Tags> Tags { get; set; } = null!;
 
+        
+
     }
 }
