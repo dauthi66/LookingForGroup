@@ -12,6 +12,8 @@ builder.Services.AddDbContext<LookingForGroupDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
+builder.Services.AddTransient<TagsDBHelper>();
+
 builder.Services.AddDefaultIdentity<LookingForGroupUser>(options => options.SignIn.RequireConfirmedAccount = true)
     //add role support (for admins)
     .AddRoles<IdentityRole>()
@@ -56,12 +58,12 @@ await IdentityHelper.CreateRoles
 //create default admin
 await IdentityHelper.CreateDefaultMember(serviceProvider.ServiceProvider, IdentityHelper.Admin);
 
-LookingForGroupDbContext db = new();
+TagsDBHelper tagHelper = serviceProvider.ServiceProvider.GetService<TagsDBHelper>();
 
-TagDBHelper.addTag("Adventure");
-TagDBHelper.addTag("FPS");
-TagDBHelper.addTag("RPG");
-TagDBHelper.addTag("Racing");
+tagHelper.addTag("Adventure");
+tagHelper.addTag("FPS");
+tagHelper.addTag("RPG");
+tagHelper.addTag("Racing");
 
 app.Run();
 

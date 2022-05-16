@@ -3,12 +3,21 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LookingForGroup.Data
 {
-    internal partial class TagDBHelper
-    {
-        public static void addTag(string newTag)
+    public class TagsDBHelper
+    { 
+        private readonly LookingForGroupDbContext _context;
+        
+
+        public TagsDBHelper(LookingForGroupDbContext context)
         {
-            using LookingForGroupDbContext database = new();
-            Tags? tag = (from Tags in database.Tags
+            _context = context;
+            
+        }
+
+        public void addTag(string newTag)
+        {
+            
+            Tags? tag = (from Tags in _context.Tags
                          where Tags.TagName == newTag
                          select Tags).FirstOrDefault();
 
@@ -18,15 +27,15 @@ namespace LookingForGroup.Data
                 {
                     TagName = newTag
                 };
-                database.Tags.Add(tags);
-                database.SaveChanges();
+                _context.Tags.Add(tags);
+                _context.SaveChanges();
             }
         }
 
-        public static async Task<List<Tags>> getTagsList()
+        public async Task<List<Tags>> getTagsList()
         {
-            using LookingForGroupDbContext db = new();
-            return await db.Tags.ToListAsync();
+            using LookingForGroupDbContext _context = new();
+            return await _context.Tags.ToListAsync();
         }
     }
 }

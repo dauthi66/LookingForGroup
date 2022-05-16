@@ -1,5 +1,6 @@
 ﻿@using LookingForGroup.Areas.Identity.Data
 @using LookingForGroup.Data
+@inject TagsDBHelper _tagHelper;
 <button class="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft" aria-controls="offcanvasLeft">Search</button>
 
 <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasLeft" aria-labelledby="offcanvasLeftLabel">
@@ -22,7 +23,7 @@
     </ul>
     
         @{
-            List<Tags> tagList = await TagDBHelper.getTagsList();
+            List<Tags> tagList = await _tagHelper.getTagsList();
         }
      <!--Creates a Check-box toggle button for each tag-->
      <form>

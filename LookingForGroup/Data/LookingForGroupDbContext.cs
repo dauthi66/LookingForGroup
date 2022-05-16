@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LookingForGroup.Data
 {
-    internal partial class LookingForGroupDbContext : IdentityDbContext
+    public partial class LookingForGroupDbContext : IdentityDbContext
     {
         public LookingForGroupDbContext()
         {
