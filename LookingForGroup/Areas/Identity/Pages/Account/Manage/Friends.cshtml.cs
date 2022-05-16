@@ -22,7 +22,8 @@ namespace LookingForGroup.Areas.Identity.Pages.Account.Manage
 
         public List<FriendModel> AllFriends { get; set; }
 
-        public FriendModel()
+        //Friend view model to use for friend list
+        public FriendModel(LookingForGroupUser user)
         {
             this.Id = Id;
             this.Name = Name;
@@ -34,26 +35,26 @@ namespace LookingForGroup.Areas.Identity.Pages.Account.Manage
 
         public async Task<IActionResult> OnGetAsync()
         {
-            FriendModel FriendModel = new();
-            FriendModel.AllFriends = (FriendModel)await _context.LookingForGroupUsers.ToListAsync();
+            //list of all looking for group users
+            List<LookingForGroupUser> users = await _context.LookingForGroupUsers.ToListAsync();
+
+            //Put this list into a FriendModel list to convert over necessary data easily??
+
+            
+            
+            //alternate solution
+            //query for all of the user's friend IDs
+            List<FriendModel> friendList = await _context.FriendsLists.ToListAsync();
+
+            //cross reference all friend IDs with users in database to extract information
+            foreach (var user in users)
+            {
+                //add friend to AllFriends
+                FriendModel friend = new(user);
+                AllFriends.Add(friend);
+            }
 
             return Page();
-
-            //LookingForGroupDbContext database = new();
-            //List<LookingForGroupUser> users = database.LookingForGroupUsers.ToList();
-            //    //skip this many pages of crates
-            //    .ToListAsync();
-            ////List<Crate> crates = await (from game in _context.Crates
-            ////                            select game)
-            ////                            .Skip(NumCratesToDisplayPerPage * (currPage - PageOffset))                   
-            ////                            .Take(NumCratesToDisplayPerPage)                                        
-            ////                            .ToListAsync();
-            ////show on web page
-
-            ////pass data to catalogue model
-            //CrateCatalogueViewModel catalogueModel = new(crates, totalNumOfPages, currPage);
-            ////pass model to view, make sure to change from IEnumerable on view
-            //return View(catalogueModel);
         }
     }
 }

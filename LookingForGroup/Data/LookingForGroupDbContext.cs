@@ -28,6 +28,7 @@ namespace LookingForGroup.Data
 
         public DbSet<FriendsList> FriendsLists { get; set; } = null!;
 
+        //Manually setup table and relationships due to complexity of relationship
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
