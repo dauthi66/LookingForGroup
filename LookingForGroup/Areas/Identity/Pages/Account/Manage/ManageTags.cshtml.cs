@@ -5,8 +5,5 @@ namespace LookingForGroup.Areas.Identity.Pages.Account.Manage
 {
     public class ManageTagsModel : PageModel
     {
-        public void OnGet()
-        {
-        }
     }
 }
