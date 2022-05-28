@@ -4,3 +4,15 @@
 	ViewData["Title"] = "Manage Tags";
     ViewData["ActivePage"] = ManageNavPages.ManageTags;
 }
+
+<h3>@ViewData["Title"]</h3>
+<partial name="_StatusMessage" for="StatusMessage" />
+<div class="row">
+    <div class="col-md-6">
+        <form id="manage-tags-form" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <button type="submit" class="w-100 btn btn-lg btn-primary">Add Selected Tags</button>
+        </form>
+    </div>
+</div>
