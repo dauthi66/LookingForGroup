@@ -12,7 +12,8 @@ namespace LookingForGroup.Areas.Identity.Pages.Account.Manage
         private readonly UserManager<LookingForGroupUser> _userManager;
         private readonly LookingForGroupDbContext _context;
 
-        public ManageTagsModel(
+        public ManageTagsModel
+            (
             UserManager<LookingForGroupUser> userManager,
             LookingForGroupDbContext context
             )
@@ -20,7 +21,7 @@ namespace LookingForGroup.Areas.Identity.Pages.Account.Manage
             _userManager = userManager;
             _context = context;
 
-        }
+        } 
 
         /// <summary>
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
@@ -37,10 +38,10 @@ namespace LookingForGroup.Areas.Identity.Pages.Account.Manage
         {
             // Get a list of all tags from the database
             [Display(Name = "Tags")]
-            public List<Tags> Tags { get; set; }
+            public List<Tags> Tags { get; set; } = null!;
 
             [Display(Name = "Selected Tags")]
-            public List<Tags> SelectedTags { get; set; }
+            public List<Tags> SelectedTags { get; set; } = null!;
 
         }
 
