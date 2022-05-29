@@ -34,7 +34,6 @@ namespace LookingForGroup.Data
 
         public async Task<List<Tags>> getTagsList()
         {
-            using LookingForGroupDbContext _context = new();
             return await _context.Tags.ToListAsync();
         }
     }

@@ -3,16 +3,25 @@
 @{
 	ViewData["Title"] = "Manage Tags";
     ViewData["ActivePage"] = ManageNavPages.ManageTags;
+	ViewData["Add"] = "Add Tags";
 }
 
-<h3>@ViewData["Title"]</h3>
+<h3>@ViewData["Add"]</h3>
+
 <partial name="_StatusMessage" for="StatusMessage" />
 <div class="row">
     <div class="col-md-6">
         <form id="manage-tags-form" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            
-            <button type="submit" class="w-100 btn btn-lg btn-primary">Add Selected Tags</button>
-        </form>
+			<div class="btn-group btn-group-sm" role="group" aria-label="Basic checkbox toggle button group">
+                @for (int i = 0; i < Model.Input.Tags.Count; i++)
+                {
+                        string id = "checkedbtn" + Model.Input.Tags[i].TagId;
+                        <input type="checkbox" class="btn-check" value="@Model.Input.Tags[i].TagId" id="@id" autocomplete="off">
+                        <label class="btn btn-outline-primary" for="@id">@Model.Input.Tags[i].TagName</label>
+                }
+            </div>
+        </form><br />
+		<button type="submit" class="w-100 btn btn-lg btn-primary">Add Selected Tags</button>
     </div>
 </div>
