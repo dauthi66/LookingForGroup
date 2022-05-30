@@ -5,7 +5,7 @@ using LookingForGroup.Data;
 
 namespace LookingForGroup.Data
 {
-    internal partial class LookingForGroupDbContext : IdentityDbContext
+    public partial class LookingForGroupDbContext : IdentityDbContext
     {
         public LookingForGroupDbContext()
         {
@@ -28,7 +28,7 @@ namespace LookingForGroup.Data
 
         public DbSet<FriendsList> FriendsLists { get; set; } = null!;
 
-        //Manually setup table and relationships due to complexity of relationship
+        //Manually setup table and relationships due to complexity
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
