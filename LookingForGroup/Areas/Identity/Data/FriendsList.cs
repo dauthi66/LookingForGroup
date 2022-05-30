@@ -11,9 +11,5 @@ namespace LookingForGroup.Areas.Identity.Data
 
         public virtual LookingForGroupUser Account { get; set; } = null!;
         public virtual LookingForGroupUser Friend { get; set; } = null!;
-
-        //public FriendList()
-        //{
-        //}
     }
 }

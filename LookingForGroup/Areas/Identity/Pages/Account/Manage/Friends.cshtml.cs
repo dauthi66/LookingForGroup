@@ -42,13 +42,11 @@ namespace LookingForGroup.Areas.Identity.Pages.Account.Manage
             //Instanciate a new AllFriends
             AllFriends = new List<InputModel>();
 
-            //Create TODO: list
-
-            //TODO: This will need to be altered to just get an ID match to find only user's current friends
-            //Utilize built in _userManager: var user = await _userManager.GetUserAsync(User);
-
+            //TODO: This will need to be altered to just get an ID match to find only user's current friends.
+            //      Utilize built in _userManager: var user = await _userManager.GetUserAsync(User);
             //Get list of all looking for group users
             List<LookingForGroupUser> allUsers = await _context.LookingForGroupUsers.ToListAsync();
+
             foreach (var user in allUsers)
             {
                 Input = new InputModel()
