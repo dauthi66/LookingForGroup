@@ -24,7 +24,7 @@ namespace LookingForGroup.Data
 
         public DbSet<LookingForGroupUser> LookingForGroupUsers { get; set; } = null!;
 
-        public DbSet<Tag> Tags { get; set; } = null!;
+        public DbSet<Tags> Tags { get; set; } = null!;
 
         public DbSet<FriendsList> FriendsLists { get; set; } = null!;
 

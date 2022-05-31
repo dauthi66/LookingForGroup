@@ -8,13 +8,13 @@ namespace LookingForGroup.Data
         public static void addTag(string newTag)
         {
             using LookingForGroupDbContext database = new();
-            Tag? tag = (from Tags in database.Tags
+            Tags? tag = (from Tags in database.Tags
                          where Tags.TagName == newTag
                          select Tags).FirstOrDefault();
 
             if (tag is null)
             {
-                Tag tags = new()
+                Tags tags = new()
                 {
                     TagName = newTag
                 };

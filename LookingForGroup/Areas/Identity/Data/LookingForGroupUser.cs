@@ -14,7 +14,7 @@ namespace LookingForGroup.Areas.Identity.Data
         public string? Name { get; set; }
 
         [PersonalData]
-        public List<Tag> Tags { get; set; } = new List<Tag>();
+        public List<Tags> Tags { get; set; } = new List<Tags>();
 
         [PersonalData]
         public virtual ICollection<FriendsList> FriendsListAccounts { get; set; }
