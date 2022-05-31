@@ -75,7 +75,6 @@ namespace LookingForGroup.Areas.Identity.Pages.Account.Manage
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
 
-
             Username = userName;
 
             Input = new InputModel
