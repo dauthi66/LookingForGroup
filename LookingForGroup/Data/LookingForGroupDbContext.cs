@@ -61,8 +61,6 @@ namespace LookingForGroup.Data
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__FriendsLi__Frien__276EDEB3");
             });
-
-            OnModelCreatingPartial(modelBuilder);
         }
     }
 }
