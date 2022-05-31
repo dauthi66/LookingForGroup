@@ -4,23 +4,23 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LookingForGroup.Areas.Identity.Data
 {
-    
-    public class Tag
-    {   
+
+    public class Tags
+    {
+
         [Key]
         public int TagId { get; set; }
-
-        [Required]
-        public string TagName { get; set; }
+        public string? TagName { get; set; }
 
         public List<LookingForGroupUser> LookingForGroupUsers { get; set; }
 
-        public Tag(String tagname)
-        {    
+        public Tags(string tagname)
+        {
+
             TagName = tagname;
         }
 
-        public Tag()
+        public Tags()
         {
         }
     }
