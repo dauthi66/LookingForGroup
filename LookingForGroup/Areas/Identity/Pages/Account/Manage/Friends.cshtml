@@ -1,0 +1,27 @@
+﻿@page
+@model FriendsModel
+
+@{
+    ViewData["Title"] = "Friends";
+    ViewData["ActivePage"] = ManageNavPages.Friends;
+}
+
+<h3>@ViewData["Title"]</h3>
+
+<div class = "row">
+    @*create cards for each crate model*@
+    @foreach (FriendsModel.InputModel friend in Model.AllFriends)
+    {
+        <div class = "col-md-4">
+            <div class="card" style="width: 18rem;">
+              <img src="https://via.placeholder.com/200" class="card-img-top" alt="Cover for">
+              <div class="card-body">
+                <h5 class="card-title"><u> @friend.UserName </u></h5>
+                <p class="card-text">
+                    A description of the friend can go here.
+                </p>
+              </div>
+            </div>
+        </div>
+    }
+</div>
