@@ -64,7 +64,5 @@ namespace LookingForGroup.Data
 
             OnModelCreatingPartial(modelBuilder);
         }
-
-        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 }
