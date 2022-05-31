@@ -14,16 +14,17 @@ namespace LookingForGroup.Areas.Identity.Pages.Account.Manage
         private readonly LookingForGroupDbContext _context;
 
         //Friend view model to use for friend list
-        public FriendsModel(UserManager<LookingForGroupUser> userManager, LookingForGroupDbContext context)
+        public FriendsModel(UserManager<LookingForGroupUser> userManager,
+                            LookingForGroupDbContext context)
         {
             _userManager = userManager;
             _context = context; //not needed?
         }
 
         [BindProperty]
-        public InputModel Input { get; set; }
+        public InputModel Input { get; set; } = null!;
 
-        public List<InputModel> AllFriends { get; set; }
+        public List<InputModel> AllFriends { get; set; } = null!;
 
         public class InputModel
         {

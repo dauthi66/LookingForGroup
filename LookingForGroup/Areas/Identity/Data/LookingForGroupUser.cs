@@ -11,7 +11,7 @@ namespace LookingForGroup.Areas.Identity.Data
         }
 
         [PersonalData]
-        public string? Name { get; set; } = null!;
+        public string Name { get; set; } = null!;
 
         [PersonalData]
         public List<Tags> Tags { get; set; } = new List<Tags>();
