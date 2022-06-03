@@ -17,11 +17,6 @@ namespace LookingForGroup.Data
             
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=LookingForGroupDB;Trusted_Connection=True;MultipleActiveResultSets=true");
-        }
-
         public DbSet<LookingForGroupUser> LookingForGroupUsers { get; set; } = null!;
 
         public DbSet<Tags> Tags { get; set; } = null!;
