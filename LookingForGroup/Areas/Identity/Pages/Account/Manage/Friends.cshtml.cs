@@ -18,7 +18,7 @@ namespace LookingForGroup.Areas.Identity.Pages.Account.Manage
                             LookingForGroupDbContext context)
         {
             _userManager = userManager;
-            _context = context; //not needed?
+            _context = context;
         }
 
         [BindProperty]
@@ -26,6 +26,7 @@ namespace LookingForGroup.Areas.Identity.Pages.Account.Manage
 
         public List<InputModel> AllFriends { get; set; } = null!;
 
+        //input model for friend list
         public class InputModel
         {
             [Required]
