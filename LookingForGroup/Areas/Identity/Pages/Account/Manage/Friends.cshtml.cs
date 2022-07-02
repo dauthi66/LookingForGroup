@@ -8,14 +8,16 @@ using System.ComponentModel.DataAnnotations;
 
 namespace LookingForGroup.Areas.Identity.Pages.Account.Manage
 {
+    //corresponding model for Friends page
     public class FriendsModel : PageModel
     {
         private readonly UserManager<LookingForGroupUser> _userManager;
         private readonly LookingForGroupDbContext _context;
 
         //Friend view model to use for friend list
-        public FriendsModel(UserManager<LookingForGroupUser> userManager,
-                            LookingForGroupDbContext context)
+        public FriendsModel(
+            UserManager<LookingForGroupUser> userManager,
+            LookingForGroupDbContext context)
         {
             _userManager = userManager;
             _context = context;
