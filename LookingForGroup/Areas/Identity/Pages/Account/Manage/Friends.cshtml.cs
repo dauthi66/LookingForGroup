@@ -14,7 +14,7 @@ namespace LookingForGroup.Areas.Identity.Pages.Account.Manage
         private readonly UserManager<LookingForGroupUser> _userManager;
         private readonly LookingForGroupDbContext _context;
 
-        //Friend view model to use for friend list
+        //Friend constructor to use for friend list
         public FriendsModel(
             UserManager<LookingForGroupUser> userManager,
             LookingForGroupDbContext context)
@@ -51,6 +51,7 @@ namespace LookingForGroup.Areas.Identity.Pages.Account.Manage
             //Get list of all looking for group users
             List<LookingForGroupUser> allUsers = await _context.LookingForGroupUsers.ToListAsync();
 
+            //add each user with specified data from allUsers to AllFriends
             foreach (var user in allUsers)
             {
                 Input = new InputModel()
