@@ -29,7 +29,9 @@ namespace LookingForGroup.Areas.Identity.Pages.Account.Manage
         [TempData]
         public string StatusMessage { get; set; } = null!;
 
-        //input model for tag list 
+        /// <summary>
+        /// Input model for tag list 
+        /// </summary>
         public class InputModel
         {
             [Display(Name = "Tags")]
