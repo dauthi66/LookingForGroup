@@ -15,7 +15,7 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddTransient<TagsDBHelper>();
 
 builder.Services.AddDefaultIdentity<LookingForGroupUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    //add role support (for admins)
+    //add role support (this is for admins)
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<LookingForGroupDbContext>();
 
@@ -47,9 +47,6 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
-
-//create a loop
-
 
 //create service provider to access built in services
 IServiceScope? serviceProvider = app.Services.GetRequiredService<IServiceProvider>().CreateScope();
