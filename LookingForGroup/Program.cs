@@ -48,6 +48,9 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
 
+//create a loop
+
+
 //create service provider to access built in services
 IServiceScope? serviceProvider = app.Services.GetRequiredService<IServiceProvider>().CreateScope();
 
@@ -58,8 +61,10 @@ await IdentityHelper.CreateRoles
 //create default admin
 await IdentityHelper.CreateDefaultMember(serviceProvider.ServiceProvider, IdentityHelper.Admin);
 
+// allow use of TagsDBhelper
 TagsDBHelper tagHelper = serviceProvider.ServiceProvider.GetService<TagsDBHelper>();
 
+//create some default tags
 tagHelper.addTag("Adventure");
 tagHelper.addTag("FPS");
 tagHelper.addTag("RPG");

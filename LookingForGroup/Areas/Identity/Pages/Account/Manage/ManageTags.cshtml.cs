@@ -29,15 +29,17 @@ namespace LookingForGroup.Areas.Identity.Pages.Account.Manage
         [TempData]
         public string StatusMessage { get; set; } = null!;
 
-        //input model for tag list 
+        /// <summary>
+        /// input model for tag list 
+        /// </summary>
         public class InputModel
         {
             [Display(Name = "Tags")]
             public List<Tags> Tags { get; set; } = null!;
 
+            //will be used later to identify which tags are selected
             [Display(Name = "Selected Tags")]
             public List<Tags> SelectedTags { get; set; } = null!;
-
         }
 
         public async Task<IActionResult> OnGetAsync()
