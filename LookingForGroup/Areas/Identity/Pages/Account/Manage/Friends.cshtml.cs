@@ -8,17 +8,19 @@ using System.ComponentModel.DataAnnotations;
 
 namespace LookingForGroup.Areas.Identity.Pages.Account.Manage
 {
+    //corresponding model for Friends page
     public class FriendsModel : PageModel
     {
         private readonly UserManager<LookingForGroupUser> _userManager;
         private readonly LookingForGroupDbContext _context;
 
-        //Friend view model to use for friend list
-        public FriendsModel(UserManager<LookingForGroupUser> userManager,
-                            LookingForGroupDbContext context)
+        //Friend constructor to use for friend list
+        public FriendsModel(
+            UserManager<LookingForGroupUser> userManager,
+            LookingForGroupDbContext context)
         {
             _userManager = userManager;
-            _context = context; //not needed?
+            _context = context;
         }
 
         [BindProperty]
@@ -26,6 +28,7 @@ namespace LookingForGroup.Areas.Identity.Pages.Account.Manage
 
         public List<InputModel> AllFriends { get; set; } = null!;
 
+        //input model for friend list
         public class InputModel
         {
             [Required]
@@ -48,6 +51,7 @@ namespace LookingForGroup.Areas.Identity.Pages.Account.Manage
             //Get list of all looking for group users
             List<LookingForGroupUser> allUsers = await _context.LookingForGroupUsers.ToListAsync();
 
+            //add each user with specified data from allUsers to AllFriends
             foreach (var user in allUsers)
             {
                 Input = new InputModel()

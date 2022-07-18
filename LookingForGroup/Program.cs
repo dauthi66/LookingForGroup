@@ -15,7 +15,7 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddTransient<TagsDBHelper>();
 
 builder.Services.AddDefaultIdentity<LookingForGroupUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    //add role support (for admins)
+    //add role support (this is for admins)
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<LookingForGroupDbContext>();
 
@@ -58,8 +58,10 @@ await IdentityHelper.CreateRoles
 //create default admin
 await IdentityHelper.CreateDefaultMember(serviceProvider.ServiceProvider, IdentityHelper.Admin);
 
+// allow use of TagsDBhelper
 TagsDBHelper tagHelper = serviceProvider.ServiceProvider.GetService<TagsDBHelper>();
 
+//create some default tags
 tagHelper.addTag("Adventure");
 tagHelper.addTag("FPS");
 tagHelper.addTag("RPG");

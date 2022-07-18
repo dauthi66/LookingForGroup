@@ -1,8 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
 namespace LookingForGroup.Areas.Identity.Data
-{
-
+{   
+    /// <summary>
+    /// Tags named after game genre's that users will be able
+    /// to toggle on or off on their profile
+    /// </summary>
     public class Tags
     {
 
@@ -14,7 +17,6 @@ namespace LookingForGroup.Areas.Identity.Data
 
         public Tags(string tagname)
         {
-
             TagName = tagname;
         }
 

@@ -7,56 +7,54 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace LookingForGroup.Areas.Identity.Pages.Account.Manage
 {
+    //corresponding model for Manage Tags page
     public class ManageTagsModel : PageModel
     {
         private readonly UserManager<LookingForGroupUser> _userManager;
         private readonly LookingForGroupDbContext _context;
 
-        public ManageTagsModel
-            (
+        //Manage tags constructor to use for tags list
+        public ManageTagsModel(
             UserManager<LookingForGroupUser> userManager,
-            LookingForGroupDbContext context
-            )
+            LookingForGroupDbContext context)
         {
             _userManager = userManager;
             _context = context;
 
-        } 
+        }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         [BindProperty]
-        public InputModel Input { get; set; }
+        public InputModel Input { get; set; } = null!;
 
         [TempData]
-        public string StatusMessage { get; set; }
+        public string StatusMessage { get; set; } = null!;
 
-
+        /// <summary>
+        /// input model for tag list 
+        /// </summary>
         public class InputModel
         {
-            // Get a list of all tags from the database
             [Display(Name = "Tags")]
             public List<Tags> Tags { get; set; } = null!;
 
+            //will be used later to identify which tags are selected
             [Display(Name = "Selected Tags")]
             public List<Tags> SelectedTags { get; set; } = null!;
-
         }
 
         public async Task<IActionResult> OnGetAsync()
         {
+            //check if user is logged in
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
+            //get all tags from database
             TagsDBHelper tagsDBHelper = new TagsDBHelper(_context);
-
             List<Tags> tags = await tagsDBHelper.getTagsList();
-
+            //set data within input model
             Input = new InputModel
             {
                 Tags = tags,

@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
 namespace LookingForGroup.Areas.Identity.Data
-{
+{   
+    //Custom user class that inherits from ASP.NET's built in user class
     public class LookingForGroupUser : IdentityUser
     {
         public LookingForGroupUser()
@@ -9,7 +10,7 @@ namespace LookingForGroup.Areas.Identity.Data
             FriendsListAccounts = new HashSet<FriendsList>();
             FriendsListFriends = new HashSet<FriendsList>();
         }
-
+        
         [PersonalData]
         public string Name { get; set; } = null!;
 
@@ -22,6 +23,7 @@ namespace LookingForGroup.Areas.Identity.Data
         [PersonalData]
         public virtual ICollection<FriendsList> FriendsListFriends { get; set; }
 
+        //Future updates
         //[PersonalData]
         //public List<UserPlatforms> Platforms { get; set; } = new List<UserPlatforms>();
 
