@@ -16,5 +16,5 @@ interested in similar games and/or genres.
 - Some basics of using Entity Framework Core [here.](https://docs.microsoft.com/en-us/ef/core/get-started/overview/first-app?tabs=netcore-cli)
 - An overview of the code first database migration process [here.](https://docs.microsoft.com/en-us/ef/core/dbcontext-configuration/)
 
-## Screen Shots
+## Screenshots
 ![The Title Page](Screenshots/TitlePage.png)
