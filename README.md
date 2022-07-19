@@ -17,3 +17,4 @@ interested in similar games and/or genres.
 - An overview of the code first database migration process [here.](https://docs.microsoft.com/en-us/ef/core/dbcontext-configuration/)
 
 ## Screen Shots
+![The Title Page](Screenshots/TitlePage.png)
