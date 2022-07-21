@@ -26,6 +26,8 @@ namespace LookingForGroup.Areas.Identity.Pages.Account.Manage
         [BindProperty]
         public InputModel Input { get; set; } = null!;
 
+        public string userNameToFind;
+
         public List<InputModel> AllFriends { get; set; } = null!;
 
         //input model for friend list
@@ -66,6 +68,12 @@ namespace LookingForGroup.Areas.Identity.Pages.Account.Manage
 
             return Page();
         }
+
+
+        //public async Task<IActionResult> OnPostAsync()
+        //{
+
+        //}
     }
 }
 

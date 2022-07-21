@@ -10,6 +10,13 @@
 <h3>@ViewData["Title"]</h3>
 
 <div class = "row">
+    @{//create an input box and a submit button to add a friend by username
+    <div class="form-floating">
+        <input asp-for="userNameToFind" class="form-control" autocomplete="new-password" aria-required="true" />
+    </div>
+    <button type="submit" class="w-100 btn btn-lg btn-primary">Find User</button>
+
+    }
     @*create cards representing each friend model*@
     @foreach (FriendsModel.InputModel friend in Model.AllFriends)
     {
@@ -25,4 +32,5 @@
             </div>
         </div>
     }
+
 </div>
